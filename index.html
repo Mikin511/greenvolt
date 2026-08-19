@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================================
+         MIKIN SOLAR DESIGN - Portfolio Website
+         Static site built for GitHub Pages (HTML5 + CSS3 + Vanilla JS)
+         ------------------------------------------------------------
+         HOW TO UPDATE:
+         - Replace images: drop your files into /images and update the
+           <img> src paths marked with "REPLACE:" comments below.
+         - Replace links / personal details: search for "REPLACE:".
+         - Add approved reviews: edit the approvedReviews array in
+           js/script.js (see instructions there).
+         - Make EmailJS forms work: follow setup steps in js/script.js.
+         ============================================================ -->
+
+    <!-- ==================== META / SEO ==================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikin Solar Design | Professional Solar Power Plant Design Services</title>
+    <meta name="description" content="Professional solar design services by Mikin Solar Design — 2D/3D solar layouts, shadow analysis, PVsyst reports, electrical SLDs, AC-DC wiring diagrams, AutoCAD drawings, SketchUp 3D models and client-ready presentations for installers, EPC companies and contractors.">
+    <meta name="keywords" content="solar design, solar layout, PVsyst report, shadow analysis, AutoCAD solar drawings, SketchUp 3D solar model, electrical SLD, solar wiring diagram, solar freelancer, EPC design services">
+    <meta name="author" content="Mikin Vamanrao Pachpend">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mikin511.github.io/mikinsolar/">
+
+    <!-- Open Graph (social sharing preview) -->
+    <!-- REPLACE: update og:image with the path of a real preview image -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mikin Solar Design | Professional Solar Power Plant Design">
+    <meta property="og:description" content="2D/3D solar layouts, shadow analysis, PVsyst reports, electrical SLDs, AutoCAD & SketchUp drawings and client-ready presentations.">
+    <meta property="og:url" content="https://mikin511.github.io/mikinsolar/">
+    <meta property="og:image" content="images/hero-bg.svg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- ==================== FONTS ==================== -->
+    <!-- Google Fonts: "Exo 2" for headings, "Inter" for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ==================== LIBRARIES (CDN) ==================== -->
+    <!-- Font Awesome 6 (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- AOS.js (scroll animations) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <!-- GLightbox (portfolio lightbox) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css">
+    <!-- SwiperJS (reviews carousel) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- ==================== MAIN STYLESHEET ==================== -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         PAGE LOADER - fades out automatically when the page is ready
+         ============================================================ -->
+    <div id="page-loader" aria-hidden="true">
+        <div class="loader-sun">
+            <i class="fa-solid fa-solar-panel"></i>
+        </div>
+        <span>Loading...</span>
+    </div>
+
+    <!-- ============================================================
+         FEATURE 1: FIXED SIDEBAR NAVIGATION (desktop)
+         Collapsed icons by default, expands on hover.
+         ============================================================ -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation">
+        <div class="sidebar-brand">
+            <span class="brand-mark">MS</span>
+            <span class="brand-text">Mikin Solar</span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a href="#home" class="nav-link active" data-target="home"><i class="fa-solid fa-house"></i><span class="nav-label">Home</span></a></li>
+            <li><a href="#about" class="nav-link" data-target="about"><i class="fa-solid fa-user"></i><span class="nav-label">About</span></a></li>
+            <li><a href="#services" class="nav-link" data-target="services"><i class="fa-solid fa-solar-panel"></i><span class="nav-label">Services</span></a></li>
+            <li><a href="#portfolio" class="nav-link" data-target="portfolio"><i class="fa-solid fa-images"></i><span class="nav-label">Portfolio</span></a></li>
+            <li><a href="#why-me" class="nav-link" data-target="why-me"><i class="fa-solid fa-star"></i><span class="nav-label">Why Me</span></a></li>
+            <li><a href="#reviews" class="nav-link" data-target="reviews"><i class="fa-solid fa-comment-dots"></i><span class="nav-label">Reviews</span></a></li>
+            <li><a href="#contact" class="nav-link" data-target="contact"><i class="fa-solid fa-envelope"></i><span class="nav-label">Contact</span></a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <span class="nav-label">© Mikin Solar</span>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         MOBILE: HAMBURGER BUTTON + FULL-SCREEN OVERLAY MENU
+         ============================================================ -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-overlay" id="mobile-overlay">
+        <div class="mobile-overlay-inner">
+            <span class="mobile-brand-mark">MS</span>
+            <span class="mobile-brand-text">Mikin Solar Design</span>
+            <ul class="mobile-nav-list">
+                <li><a href="#home" class="nav-link" data-target="home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about" class="nav-link" data-target="about"><i class="fa-solid fa-user"></i> About</a></li>
+                <li><a href="#services" class="nav-link" data-target="services"><i class="fa-solid fa-solar-panel"></i> Services</a></li>
+                <li><a href="#portfolio" class="nav-link" data-target="portfolio"><i class="fa-solid fa-images"></i> Portfolio</a></li>
+                <li><a href="#why-me" class="nav-link" data-target="why-me"><i class="fa-solid fa-star"></i> Why Me</a></li>
+                <li><a href="#reviews" class="nav-link" data-target="reviews"><i class="fa-solid fa-comment-dots"></i> Reviews</a></li>
+                <li><a href="#contact" class="nav-link" data-target="contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="main-content">
+
+        <!-- ============================================================
+             FEATURE 2: HERO SECTION
+             ============================================================ -->
+        <section id="home" class="hero">
+            <!-- REPLACE: change this background image to your own hero photo (e.g. a rooftop solar plant) -->
+            <div class="hero-bg" style="background-image:url('images/hero-bg.svg');"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <span class="hero-label"><i class="fa-solid fa-sun"></i> Solar Design Specialist</span>
+                <h1 class="hero-title">Professional <span class="text-gold">Solar Power Plant</span> Design</h1>
+                <p class="hero-subtitle">Precision Engineering. Client-Ready Presentations. Proven Results.</p>
+
+                <div class="hero-cta">
+                    <a href="#portfolio" class="btn btn-gold"><i class="fa-solid fa-images"></i> View My Work</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Get a Quote</a>
+                </div>
+
+                <!-- REPLACE: update the numbers below in js/script.js (count-up values) -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number"><span data-count="50" data-suffix="+">0</span></span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number"><span data-count="5" data-suffix="+">0</span></span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number"><span data-count="100" data-suffix="%">0</span></span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#about" class="hero-scroll" aria-label="Scroll down"><i class="fa-solid fa-chevron-down"></i></a>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 3: ABOUT SECTION
+             ============================================================ -->
+        <section id="about" class="section">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">About Me</span>
+                <h2 class="section-title">Solar Design Engineer with Real On-Site Experience</h2>
+                <div class="section-line"><span></span></div>
+            </div>
+
+            <div class="about-grid">
+                <!-- Left: photo -->
+                <div class="about-photo-col" data-aos="fade-right">
+                    <!-- REPLACE: replace with your photo, e.g. images/your-photo.jpg -->
+                    <div class="about-photo-frame">
+                        <img src="images/profile.svg" alt="Portrait of Mikin Vamanrao Pachpend, solar design engineer" loading="lazy">
+                    </div>
+                    <div class="about-badge">
+                        <i class="fa-solid fa-award"></i>
+                        <span><strong>5+ Years</strong> Field Experience</span>
+                    </div>
+                </div>
+
+                <!-- Right: content -->
+                <div class="about-text-col" data-aos="fade-left">
+                    <p class="about-lead">Hi, I'm <strong class="text-gold">Mikin</strong> — a solar power plant design engineer with over 5 years of hands-on experience in solar installation, design, and service.</p>
+                    <p>I hold a degree in Electrical Engineering (BE), and I've spent the last five-plus years in the field — not just behind a desk. I've worked directly on solar installations, seen what works on-site and what doesn't, and carried that practical understanding into every design I create. That's what sets my work apart: it's not theoretical. Every layout, drawing, and calculation is built with real-world execution in mind.</p>
+                    <p>Today, I work as a freelance solar plant design consultant, helping EPC companies, installers, and direct clients turn solar projects from concept to construction-ready design.</p>
+
+                    <h3 class="skills-heading">Tools &amp; Expertise</h3>
+                    <ul class="skills-list">
+                        <li><i class="fa-solid fa-compass-drafting"></i> AutoCAD Drawings</li>
+                        <li><i class="fa-solid fa-chart-line"></i> PVsyst Reports</li>
+                        <li><i class="fa-solid fa-cube"></i> SketchUp 3D Models</li>
+                        <li><i class="fa-solid fa-sun"></i> Shadow Analysis</li>
+                        <li><i class="fa-solid fa-diagram-project"></i> Single Line Diagrams</li>
+                        <li><i class="fa-solid fa-file-powerpoint"></i> Client Presentations</li>
+                    </ul>
+
+                    <!-- REPLACE: point the href to your actual CV file (e.g. cv/Mikin-CV.pdf) -->
+                    <a href="cv/Mikin-Solar-CV.pdf" class="btn btn-gold" download>
+                        <i class="fa-solid fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 4: SERVICES SECTION
+             ============================================================ -->
+        <section id="services" class="section services">
+            <!-- REPLACE: change this background image to your own services background -->
+            <div class="services-bg" style="background-image:url('images/services-bg.svg');"></div>
+
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">What I Do</span>
+                <h2 class="section-title">End-to-End Solar Design Services</h2>
+                <div class="section-line"><span></span></div>
+                <p class="section-desc">Whether you're an EPC company looking to outsource design work without compromising on quality, or a client who wants to see what your solar plant will look like before a single panel goes up — I offer complete design support.</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+                    <h3>2D &amp; 3D Solar Layout</h3>
+                    <p>Precise panel layout and plant design for rooftop and ground-mount systems, optimized for maximum output and site constraints.</p>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-sun"></i></div>
+                    <h3>Shadow Analysis</h3>
+                    <p>Even a small shadow on one panel can pull down the output of an entire string. Hour-by-hour yearly shadow studies show exactly where panels can and cannot go.</p>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>PVsyst Report</h3>
+                    <p>Accurate, bankable estimates of energy yield, losses, and performance ratio — the report banks, clients, and inspection authorities trust.</p>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Electrical SLD &amp; Wiring</h3>
+                    <p>Single line diagrams, AC-DC wiring diagrams, and cable sizing calculations that decide your plant's output, safety, and lifespan for the next 25 years.</p>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+                    <h3>Client Presentations</h3>
+                    <p>Client-ready presentations and 3D visualizations that help your client see the finished plant — and say yes to the proposal.</p>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <h3>AutoCAD Engineering Drawings</h3>
+                    <p>Detailed construction-ready engineering drawings that meet professional drafting standards, so your site team knows exactly what to build.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 5: PORTFOLIO SECTION
+             ============================================================ -->
+        <section id="portfolio" class="section">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Portfolio</span>
+                <h2 class="section-title">Selected Project Work</h2>
+                <div class="section-line"><span></span></div>
+                <p class="section-desc">A look at drawings, reports, and site analysis from past projects.</p>
+            </div>
+
+            <div class="filter-bar" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="2d-layout">2D Layout</button>
+                <button class="filter-btn" data-filter="3d-design">3D Design</button>
+                <button class="filter-btn" data-filter="shadow-analysis">Shadow Analysis</button>
+                <button class="filter-btn" data-filter="sld">SLD</button>
+                <button class="filter-btn" data-filter="presentation">Presentation</button>
+            </div>
+
+            <!-- REPLACE: each card below is a placeholder.
+                 - Replace the src with your real project image
+                 - Update the title, description, and data-category
+                   (allowed: 2d-layout, 3d-design, shadow-analysis, sld, presentation)
+                 - Make sure the image path also works in the GLightbox <a> -->
+            <div class="portfolio-grid" id="portfolio-grid">
+
+                <div class="portfolio-item" data-category="2d-layout" data-aos="fade-up">
+                    <a href="images/sampleLyput.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="Rooftop Plant Layout & AutoCAD Drawing"
+                       data-description="Panel layout and electrical SLD for a rooftop installation.">
+                        <img src="images/sampleLyput.svg" alt="Plant layout and AutoCAD drawing for a rooftop installation" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">2D Layout</span>
+                            <span class="portfolio-title">Rooftop Plant Layout</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="3d-design" data-aos="fade-up" data-aos-delay="50">
+                    <a href="images/3DsketchUp.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="SketchUp 3D Visualization"
+                       data-description="Client-facing 3D view used for design approval.">
+                        <img src="images/3DsketchUp.svg" alt="3D SketchUp visualization of a solar plant" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">3D Design</span>
+                            <span class="portfolio-title">SketchUp 3D Model</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="shadow-analysis" data-aos="fade-up" data-aos-delay="100">
+                    <a href="images/shadow.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="Shadow Analysis vs Actual Shadow"
+                       data-description="Predicted shadow study compared against the real shadow on site, matched by date and time.">
+                        <img src="images/shadow.svg" alt="Predicted shadow analysis compared to actual site shadow" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Shadow Analysis</span>
+                            <span class="portfolio-title">Shadow Study vs Reality</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="sld" data-aos="fade-up">
+                    <a href="images/portfolio/project-4.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="Electrical Single Line Diagram"
+                       data-description="SLD showing inverter, panels, and protection equipment for a rooftop system.">
+                        <img src="images/portfolio/project-4.svg" alt="Electrical single line diagram for a solar system" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">SLD</span>
+                            <span class="portfolio-title">Electrical SLD</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="presentation" data-aos="fade-up" data-aos-delay="50">
+                    <a href="images/PVsyst.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="PVsyst Simulation Report"
+                       data-description="Energy yield and loss diagram for a sample plant — client-ready presentation format.">
+                        <img src="images/PVsyst.svg" alt="PVsyst simulation report energy yield and loss diagram" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">Presentation</span>
+                            <span class="portfolio-title">PVsyst Report</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="2d-layout" data-aos="fade-up" data-aos-delay="100">
+                    <a href="images/portfolio/project-6.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="Ground Mount Layout"
+                       data-description="Optimized panel layout for a ground-mounted solar plant.">
+                        <img src="images/portfolio/project-6.svg" alt="Optimized layout drawing for a ground mounted solar plant" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">2D Layout</span>
+                            <span class="portfolio-title">Ground Mount Layout</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="3d-design" data-aos="fade-up">
+                    <a href="images/portfolio/project-7.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="3D Plant Visualization"
+                       data-description="Detailed 3D model for design approval and client sign-off.">
+                        <img src="images/portfolio/project-7.svg" alt="Detailed 3D model of a solar plant for client approval" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">3D Design</span>
+                            <span class="portfolio-title">3D Plant Model</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="portfolio-item" data-category="sld" data-aos="fade-up" data-aos-delay="50">
+                    <a href="images/portfolio/project-8.svg" class="glightbox" data-gallery="portfolio"
+                       data-title="AC-DC Wiring Diagram"
+                       data-description="Wiring diagram with cable sizing for the full AC-DC power path.">
+                        <img src="images/portfolio/project-8.svg" alt="AC DC wiring diagram with cable sizing calculations" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-cat">SLD</span>
+                            <span class="portfolio-title">AC-DC Wiring Diagram</span>
+                            <i class="fa-solid fa-magnifying-glass-plus portfolio-zoom"></i>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 6: WHY CHOOSE ME SECTION
+             ============================================================ -->
+        <section id="why-me" class="section why-me">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Why Choose Me</span>
+                <h2 class="section-title">Design That's Built for Real Sites</h2>
+                <div class="section-line"><span></span></div>
+            </div>
+
+            <div class="why-grid">
+                <article class="why-card" data-aos="fade-up">
+                    <div class="why-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+                    <h3>Client-Ready Presentations</h3>
+                    <p>Presentations that help your client say yes.</p>
+                </article>
+
+                <article class="why-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <h3>Precision Engineering</h3>
+                    <p>Drawings that meet professional standards.</p>
+                </article>
+
+                <article class="why-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Quick delivery without compromising quality.</p>
+                </article>
+
+                <article class="why-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Software Expertise</h3>
+                    <p>AutoCAD, PVsyst, SketchUp expertise.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 7: REVIEWS SECTION
+             PART A - Display (SwiperJS) | PART B - Submit Review Form
+             ============================================================ -->
+        <section id="reviews" class="section reviews">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Client Reviews</span>
+                <h2 class="section-title">What Clients Say About Working With Me</h2>
+                <div class="section-line"><span></span></div>
+            </div>
+
+            <!-- ============ PART A: REVIEW CAROUSEL ============ -->
+            <!-- Reviews are auto-rendered from the approvedReviews array in js/script.js -->
+            <div class="swiper reviews-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper" id="reviews-wrapper">
+                    <!-- Review cards are injected by js/script.js -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <!-- ============ PART B: SUBMIT REVIEW FORM ============ -->
+            <!-- Requires EmailJS setup - see comments in js/script.js -->
+            <div class="review-form-wrap" data-aos="fade-up">
+                <h3 class="form-title">Leave a Review</h3>
+                <p class="form-note">Had a project delivered? I'd love to hear about it. Your email stays private.</p>
+
+                <form id="review-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rv-name">Your Name <span class="req">*</span></label>
+                            <input type="text" id="rv-name" name="from_name" placeholder="e.g. Ramesh Patil" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rv-email">Your Email (private) <span class="req">*</span></label>
+                            <input type="email" id="rv-email" name="from_email" placeholder="you@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rv-company">Company <span class="opt">(optional)</span></label>
+                        <input type="text" id="rv-company" name="company" placeholder="e.g. SunPower Installers">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Rating <span class="req">*</span></label>
+                        <div class="star-rating" id="star-rating">
+                            <i class="fa-solid fa-star" data-value="1"></i>
+                            <i class="fa-solid fa-star" data-value="2"></i>
+                            <i class="fa-solid fa-star" data-value="3"></i>
+                            <i class="fa-solid fa-star" data-value="4"></i>
+                            <i class="fa-solid fa-star" data-value="5"></i>
+                            <input type="hidden" name="rating" id="rv-rating" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rv-message">Your Review <span class="req">*</span></label>
+                        <textarea id="rv-message" name="message" rows="4" placeholder="Tell me about your experience..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-gold btn-block"><i class="fa-solid fa-paper-plane"></i> Submit Review</button>
+                    <p class="form-status" id="review-form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FEATURE 8: CONTACT SECTION
+             ============================================================ -->
+        <section id="contact" class="section contact">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-kicker">Get In Touch</span>
+                <h2 class="section-title">Let's Build Your Next Solar Project</h2>
+                <div class="section-line"><span></span></div>
+                <p class="section-desc">Reach out any time — happy to help with a quote, a question, or a project in progress.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Left: contact info -->
+                <div class="contact-info" data-aos="fade-right">
+                    <!-- REPLACE: update all contact details and social links below -->
+                    <a href="mailto:mikinvp4@gmail.com" class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mikinvp4@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/919404502059" target="_blank" rel="noopener" class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <!-- REPLACE: update phone number -->
+                            <p>+91 94045 02059</p>
+                        </div>
+                    </a>
+
+                    <a href="tel:+919665630658" class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <!-- REPLACE: update phone number -->
+                            <p>+91 96656 30658</p>
+                        </div>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <!-- REPLACE: update your city / country -->
+                            <p>India (Working Worldwide)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <!-- REPLACE: replace with your LinkedIn profile URL -->
+                        <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <!-- REPLACE: replace with your Upwork profile URL -->
+                        <a href="https://www.upwork.com/freelancers/YOUR-UPWORK" target="_blank" rel="noopener" class="social-link" aria-label="Upwork"><i class="fa-brands fa-upwork"></i></a>
+                        <a href="https://wa.me/919404502059" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:mikinvp4@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right: contact form -->
+                <div class="contact-form-wrap" data-aos="fade-left">
+                    <!-- Requires EmailJS setup - see comments in js/script.js -->
+                    <form id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-name">Name <span class="req">*</span></label>
+                                <input type="text" id="ct-name" name="from_name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-email">Email <span class="req">*</span></label>
+                                <input type="email" id="ct-email" name="from_email" placeholder="you@company.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ct-subject">Subject</label>
+                            <select id="ct-subject" name="subject">
+                                <option value="">Select a service...</option>
+                                <option value="2D/3D Solar Layout">2D/3D Solar Layout</option>
+                                <option value="Shadow Analysis">Shadow Analysis</option>
+                                <option value="PVsyst Report">PVsyst Report</option>
+                                <option value="Electrical SLD & Wiring">Electrical SLD &amp; Wiring</option>
+                                <option value="AutoCAD Engineering Drawings">AutoCAD Engineering Drawings</option>
+                                <option value="Client Presentation">Client Presentation</option>
+                                <option value="Other / General Enquiry">Other / General Enquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ct-message">Message <span class="req">*</span></label>
+                            <textarea id="ct-message" name="message" rows="5" placeholder="Tell me about your project — size, type, timeline..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold btn-block"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                        <p class="form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================
+         FEATURE 9: FOOTER
+         ============================================================ -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-col footer-brand-col">
+                <span class="brand-mark">MS</span>
+                <span class="brand-text footer-brand-text">Mikin Solar Design</span>
+                <p>Professional solar power plant design — 2D/3D layouts, shadow analysis, PVsyst reports, electrical drawings, and client-ready presentations.</p>
+                <div class="footer-social">
+                    <!-- REPLACE: replace with your LinkedIn profile URL -->
+                    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <!-- REPLACE: replace with your Upwork profile URL -->
+                    <a href="https://www.upwork.com/freelancers/YOUR-UPWORK" target="_blank" rel="noopener" aria-label="Upwork"><i class="fa-brands fa-upwork"></i></a>
+                    <a href="https://wa.me/919404502059" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:mikinvp4@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-angle-right"></i> About</a></li>
+                    <li><a href="#portfolio"><i class="fa-solid fa-angle-right"></i> Portfolio</a></li>
+                    <li><a href="#why-me"><i class="fa-solid fa-angle-right"></i> Why Choose Me</a></li>
+                    <li><a href="#reviews"><i class="fa-solid fa-angle-right"></i> Reviews</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-angle-right"></i> 2D/3D Solar Layout</li>
+                    <li><i class="fa-solid fa-angle-right"></i> Shadow Analysis</li>
+                    <li><i class="fa-solid fa-angle-right"></i> PVsyst Reports</li>
+                    <li><i class="fa-solid fa-angle-right"></i> Electrical SLD &amp; Wiring</li>
+                    <li><i class="fa-solid fa-angle-right"></i> AutoCAD Drawings</li>
+                    <li><i class="fa-solid fa-angle-right"></i> Client Presentations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mikin Solar Design. All rights reserved.</p>
+            <p>Designed with <i class="fa-solid fa-sun text-gold"></i> for the solar industry.</p>
+        </div>
+    </footer>
+
+    <!-- Floating back-to-top button -->
+    <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <!-- ==================== SCRIPTS (defer, at end of body) ==================== -->
+    <!-- EmailJS v3 - used by the review form and contact form -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- AOS.js -->
+    <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- GLightbox -->
+    <script defer src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+    <!-- SwiperJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Main site script -->
+    <script defer src="js/script.js"></script>
+
+</body>
+</html>
