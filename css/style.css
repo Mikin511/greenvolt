@@ -493,6 +493,12 @@ h1, h2, h3, h4 {
     color: var(--bg);
 }
 
+.btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .btn-outline {
     border-color: var(--secondary);
     color: var(--secondary);
