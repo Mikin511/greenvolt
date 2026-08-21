@@ -118,7 +118,7 @@ const approvedReviews = [
         company: "rihannasolar.com",
         rating: 3,
         review: "Reviews checking is a great feature.",
-        date: "12 Aug 2026"
+        date: "Aug 2026"
     }
 ];
 
