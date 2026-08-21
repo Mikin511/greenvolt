@@ -64,10 +64,14 @@ const EMAILJS_REVIEW_TEMPLATE_ID = "template_y2923ds";
 const EMAILJS_CONTACT_TEMPLATE_ID = "template_g4edgcv";
 
 const EMAILJS_CONFIGURED =
-    EMAILJS_PUBLIC_KEY !== "HX2QjwUkTcHrIuCjp" &&
-    EMAILJS_SERVICE_ID !== "service_4dmnj3j" &&
-    EMAILJS_REVIEW_TEMPLATE_ID !== "template_y2923ds" &&
-    EMAILJS_CONTACT_TEMPLATE_ID !== "template_g4edgcv";
+    EMAILJS_PUBLIC_KEY !== "" &&
+    EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
+    EMAILJS_SERVICE_ID !== "" &&
+    EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
+    EMAILJS_REVIEW_TEMPLATE_ID !== "" &&
+    EMAILJS_REVIEW_TEMPLATE_ID !== "YOUR_REVIEW_TEMPLATE_ID" &&
+    EMAILJS_CONTACT_TEMPLATE_ID !== "" &&
+    EMAILJS_CONTACT_TEMPLATE_ID !== "YOUR_CONTACT_TEMPLATE_ID";
 
 /* ============================================================
    APPROVED REVIEWS
