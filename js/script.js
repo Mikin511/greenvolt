@@ -73,6 +73,30 @@ const EMAILJS_CONFIGURED =
     EMAILJS_CONTACT_TEMPLATE_ID !== "" &&
     EMAILJS_CONTACT_TEMPLATE_ID !== "YOUR_CONTACT_TEMPLATE_ID";
 
+/* SECURITY NOTE (do this once in your EmailJS dashboard, not in code):
+   1. Log in at https://dashboard.emailjs.com
+   2. Go to Account -> Security and add your live domain under
+      "Allowed Origins" (e.g. https://mikin511.github.io) so these
+      IDs/key only work when called FROM your site.
+   3. Enable reCAPTCHA/hCaptcha on your Email Service if your plan
+      supports it, to stop scripted abuse of your send quota. */
+
+/* ============================================================
+   SHARED VALIDATION HELPERS
+   ============================================================ */
+/* Escapes HTML special characters so user-supplied text can never
+   be interpreted as markup/script when inserted via innerHTML. */
+function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = String(str == null ? "" : str);
+    return div.innerHTML;
+}
+
+/* Basic email format check (used in addition to the non-empty check). */
+function isValidEmail(str) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
+}
+
 /* ============================================================
    APPROVED REVIEWS
    ------------------------------------------------------------
@@ -204,12 +228,12 @@ function renderReviews() {
             '<div class="swiper-slide">' +
                 '<div class="review-card">' +
                     '<div class="review-stars">' + stars + '</div>' +
-                    '<p class="review-text"><i class="fa-solid fa-quote-left"></i>' + r.review + '</p>' +
+                    '<p class="review-text"><i class="fa-solid fa-quote-left"></i>' + escapeHtml(r.review) + '</p>' +
                     '<div class="review-author">' +
-                        '<div class="avatar-circle">' + initials + '</div>' +
+                        '<div class="avatar-circle">' + escapeHtml(initials) + '</div>' +
                         '<div class="review-author-info">' +
-                            '<h5>' + r.name + '</h5>' +
-                            '<p>' + r.company + ' <span class="review-date">' + r.date + '</span></p>' +
+                            '<h5>' + escapeHtml(r.name) + '</h5>' +
+                            '<p>' + escapeHtml(r.company) + ' <span class="review-date">' + escapeHtml(r.date) + '</span></p>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -456,6 +480,12 @@ function initReviewForm() {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        /* Honeypot: real visitors never fill this hidden field. */
+        var honeypot = document.getElementById("rv-hp");
+        if (honeypot && honeypot.value !== "") {
+            return;
+        }
+
         var name = document.getElementById("rv-name").value.trim();
         var email = document.getElementById("rv-email").value.trim();
         var message = document.getElementById("rv-message").value.trim();
@@ -463,6 +493,10 @@ function initReviewForm() {
 
         if (!name || !email || !message) {
             showFormStatus(status, "Please fill in your name, email, and review.", "error");
+            return;
+        }
+        if (!isValidEmail(email)) {
+            showFormStatus(status, "Please enter a valid email address.", "error");
             return;
         }
         if (rating === "0") {
@@ -514,12 +548,22 @@ function initContactForm() {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        /* Honeypot: real visitors never fill this hidden field. */
+        var honeypot = document.getElementById("ct-hp");
+        if (honeypot && honeypot.value !== "") {
+            return;
+        }
+
         var name = document.getElementById("ct-name").value.trim();
         var email = document.getElementById("ct-email").value.trim();
         var message = document.getElementById("ct-message").value.trim();
 
         if (!name || !email || !message) {
             showFormStatus(status, "Please fill in your name, email, and message.", "error");
+            return;
+        }
+        if (!isValidEmail(email)) {
+            showFormStatus(status, "Please enter a valid email address.", "error");
             return;
         }
 

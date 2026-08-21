@@ -24,6 +24,12 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mikin511.github.io/mikinsolar/">
 
+    <!-- REPLACE: add your own favicon file at images/favicon.png -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Basic Content-Security-Policy hardening -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://api.emailjs.com;">
+
     <!-- Open Graph (social sharing preview) -->
     <!-- REPLACE: update og:image with the path of a real preview image -->
     <meta property="og:type" content="website">
@@ -39,7 +45,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ==================== LIBRARIES (CDN) ==================== -->
+    <!-- ==================== LIBRARIES (CDN) ====================
+         TODO (SECURITY): add Subresource Integrity to each tag below.
+         Open the file's URL on cdnjs.com or jsdelivr.net, and copy their
+         ready-made tag (it already includes the correct integrity hash) -
+         don't type a hash by hand, a wrong one will just block the file
+         from loading. Example of what the finished tag looks like:
+         <link rel="stylesheet" href="...all.min.css"
+               integrity="sha512-XXXX...=" crossorigin="anonymous"
+               referrerpolicy="no-referrer">
+         ==================== -->
     <!-- Font Awesome 6 (icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- AOS.js (scroll animations) -->
@@ -469,6 +484,8 @@
                 <p class="form-note">Had a project delivered? I'd love to hear about it. Your email stays private.</p>
 
                 <form id="review-form" novalidate>
+                    <!-- Honeypot: hidden from real users, bots tend to fill it in -->
+                    <input type="text" name="hp_field" id="rv-hp" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="rv-name">Your Name <span class="req">*</span></label>
@@ -575,6 +592,8 @@
                 <div class="contact-form-wrap" data-aos="fade-left">
                     <!-- Requires EmailJS setup - see comments in js/script.js -->
                     <form id="contact-form" novalidate>
+                        <!-- Honeypot: hidden from real users, bots tend to fill it in -->
+                        <input type="text" name="hp_field" id="ct-hp" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ct-name">Name <span class="req">*</span></label>
@@ -666,7 +685,11 @@
     <!-- Floating back-to-top button -->
     <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 
-    <!-- ==================== SCRIPTS (defer, at end of body) ==================== -->
+    <!-- ==================== SCRIPTS (defer, at end of body) ====================
+         TODO (SECURITY): add integrity="sha384-..." + crossorigin="anonymous"
+         to each <script> below - copy the ready-made tag from jsdelivr.net /
+         unpkg.com for the exact version pinned here, don't hand-type a hash.
+         ==================== -->
     <!-- EmailJS v3 - used by the review form and contact form -->
     <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- AOS.js -->
