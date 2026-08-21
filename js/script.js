@@ -113,7 +113,8 @@ const approvedReviews = [
         review: "Good turnaround time on the CAD drawings and very responsive on WhatsApp for revisions.",
         date: "May 2026"
     }
-        {
+    ,
+    {
         name: "Rihanna Smith",
         company: "rihannasolar.com",
         rating: 3,
