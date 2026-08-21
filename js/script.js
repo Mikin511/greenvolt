@@ -52,22 +52,22 @@
    ============================================================ */
 
 /* REPLACE: paste your EmailJS Public Key here */
-const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+const EMAILJS_PUBLIC_KEY = "HX2QjwUkTcHrIuCjp";
 
 /* REPLACE: paste your EmailJS Service ID here */
-const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+const EMAILJS_SERVICE_ID = "service_4dmnj3j";
 
 /* REPLACE: paste your EmailJS Review Template ID here */
-const EMAILJS_REVIEW_TEMPLATE_ID = "YOUR_EMAILJS_REVIEW_TEMPLATE_ID";
+const EMAILJS_REVIEW_TEMPLATE_ID = "template_y2923ds";
 
 /* REPLACE: paste your EmailJS Contact Template ID here */
-const EMAILJS_CONTACT_TEMPLATE_ID = "YOUR_EMAILJS_CONTACT_TEMPLATE_ID";
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_g4edgcv";
 
 const EMAILJS_CONFIGURED =
-    EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY" &&
-    EMAILJS_SERVICE_ID !== "YOUR_EMAILJS_SERVICE_ID" &&
-    EMAILJS_REVIEW_TEMPLATE_ID !== "YOUR_EMAILJS_REVIEW_TEMPLATE_ID" &&
-    EMAILJS_CONTACT_TEMPLATE_ID !== "YOUR_EMAILJS_CONTACT_TEMPLATE_ID";
+    EMAILJS_PUBLIC_KEY !== "HX2QjwUkTcHrIuCjp" &&
+    EMAILJS_SERVICE_ID !== "service_4dmnj3j" &&
+    EMAILJS_REVIEW_TEMPLATE_ID !== "template_y2923ds" &&
+    EMAILJS_CONTACT_TEMPLATE_ID !== "template_g4edgcv";
 
 /* ============================================================
    APPROVED REVIEWS
