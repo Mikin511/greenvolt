@@ -93,34 +93,27 @@ const EMAILJS_CONFIGURED =
    ============================================================ */
 const approvedReviews = [
     {
-        name: "01 Sample Client",
+        name: "Sample Client",
         company: "Rooftop Installer Co.",
         rating: 5,
         review: "The layout drawing and shadow analysis were spot on. Saved us from a placement mistake before installation even started.",
         date: "January 2026"
     },
     {
-        name: "02 Sample Client",
+        name: "Sample Client",
         company: "Solar EPC Private Ltd.",
         rating: 5,
         review: "Clear communication and a detailed PVsyst report. Exactly what our funding team needed to approve the project.",
         date: "March 2026"
     },
     {
-        name: "03 Sample Client",
+        name: "Sample Client",
         company: "Contractor / Installer",
         rating: 4,
         review: "Good turnaround time on the CAD drawings and very responsive on WhatsApp for revisions.",
         date: "May 2026"
     }
-    ,
-    {
-        name: "04 Rihanna Smith",
-        company: "rihannasolar.com",
-        rating: 3,
-        review: "Reviews checking is a great feature.",
-        date: "Aug 2026"
-    }
+
 ];
 
 /* ============================================================
